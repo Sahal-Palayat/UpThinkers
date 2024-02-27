@@ -226,7 +226,7 @@
 
       <!--Grid column-->
       <div class="col-md-9 mb-md-0 mb-5">
-          <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+          <form id="contact-rm" id="contact-form" name="contact-form" action="mail.php" method="POST" >
 
               <!--Grid row-->
               <div class="row">
@@ -277,12 +277,14 @@
                   </div>
               </div>
               <!--Grid row-->
-
+              <div class="text-center text-md-left">
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
           </form>
 
-          <div class="text-center text-md-left">
-              <a class="btn btn-primary" onclick="document.getElementById('contact-form').submit();">Send</a>
-          </div>
+          <!-- <div class="text-center text-md-left">
+              <a class="btn btn-primary" onclick="document.getElementById('contact-rm').submit();">Send</a>
+          </div> -->
           <div class="status"></div>
       </div>
       <!--Grid column-->
@@ -379,6 +381,26 @@
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
   <!-- End Google Map -->
+  <script src="assets/js/main.js"></script>
+  <script>
+    $("#contact-rm").submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: "https://script.google.com/macros/s/AKfycby0yePQOfkLXv_wpKC5kIewR8TcTHqwtTjue8CrIjw-B5WpwTZsvtCyMMvujXrLEe2t/exec",
+            data: $("#contact-rm").serialize(),
+            method: "post",
+            success: function(response) {
+                alert("Form submitted successfully");
+                window.location.reload();
+                // Or redirect: window.location.href="https://google.com";
+            },
+            error: function(err) {
+                alert("Something went wrong");
+            }
+        });
+    });
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 </body>
 
